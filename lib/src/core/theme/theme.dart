@@ -5,7 +5,7 @@ import 'package:mood_track/src/core/theme/nunito.dart';
 final lightTheme = ThemeData(
     scaffoldBackgroundColor: _lightColor.white,
     appBarTheme: AppBarTheme(
-      backgroundColor: _lightColor.black,
+      backgroundColor: _lightColor.white,
       elevation: 0,
       scrolledUnderElevation: 0,
       centerTitle: true,

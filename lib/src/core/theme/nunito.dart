@@ -36,7 +36,6 @@ final class Nunito extends ThemeExtension<Nunito> with _$NunitoTailorMixin{
       s12W500:  TextStyle(
         fontSize: 12,
         fontWeight: FontWeight.w500,
-        color: myColor.grey2,
       ),
       s18W700:  TextStyle(
         fontSize: 18,
