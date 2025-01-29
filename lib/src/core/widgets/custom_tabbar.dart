@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mood_track/src/core/constants/border_radius.dart';
+import 'package:mood_track/src/core/constants/spacing.dart';
 import 'package:mood_track/src/core/theme/my_color.dart';
 import 'package:mood_track/src/core/theme/nunito.dart';
 
 class CustomTabBar extends StatefulWidget {
-  const CustomTabBar({required this.myTabs, super.key, required this.controller});
+  const CustomTabBar(
+      {required this.myTabs, super.key, required this.controller});
 
   final List<TabItem> myTabs;
   final TabController controller;
-
 
   @override
   State<CustomTabBar> createState() => _CustomTabBarState();
 }
 
-class _CustomTabBarState extends State<CustomTabBar>  {
-
+class _CustomTabBarState extends State<CustomTabBar> {
   @override
   void initState() {
     super.initState();
@@ -40,39 +41,49 @@ class _CustomTabBarState extends State<CustomTabBar>  {
     final color = Theme.of(context).extension<MyColor>()!;
     final nunito = Theme.of(context).extension<Nunito>()!;
 
-    return TabBar(
-      controller: widget.controller,
-      dividerColor: Colors.transparent,
-      indicator: BoxDecoration(
-        color: color.orange,
-        borderRadius: BorderRadius.circular(47),
+    return Container(
+      height: 30,
+      margin: Spacing.h44V24,
+      decoration: BoxDecoration(
+        color: color.grey4,
+        borderRadius: AppBorderRadius.all30,
       ),
-      labelColor: color.white,
-      unselectedLabelColor: color.grey2,
-      indicatorSize: TabBarIndicatorSize.tab,
-      padding: EdgeInsets.zero,
-      labelPadding: EdgeInsets.zero,
-      tabs: widget.myTabs.map((tab) {
-        return Tab(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ColorFiltered(
-                colorFilter: ColorFilter.mode(
-                 widget.controller.index == tab.index ? color.white : color.grey2,
-                  BlendMode.srcIn,
+      child: TabBar(
+        controller: widget.controller,
+        dividerColor: Colors.transparent,
+        indicator: BoxDecoration(
+          color: color.orange,
+          borderRadius: AppBorderRadius.all47,
+        ),
+        labelColor: color.white,
+        unselectedLabelColor: color.grey2,
+        indicatorSize: TabBarIndicatorSize.tab,
+        padding: EdgeInsets.zero,
+        labelPadding: EdgeInsets.zero,
+        tabs: widget.myTabs.map((tab) {
+          return Tab(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SvgPicture.asset(
+                  tab.icon,
+                  colorFilter: ColorFilter.mode(
+                    widget.controller.index == tab.index
+                        ? color.white
+                        : color.grey2,
+                    BlendMode.srcIn,
+                  ),
                 ),
-                child: SvgPicture.asset(tab.icon),
-              ),
-              const SizedBox(width: 6),
-              Text(
-                tab.label,
-                style: nunito.s12W500,
-              ),
-            ],
-          ),
-        );
-      }).toList(),
+                const SizedBox(width: 6),
+                Text(
+                  tab.label,
+                  style: nunito.s12W500,
+                ),
+              ],
+            ),
+          );
+        }).toList(),
+      ),
     );
   }
 }

@@ -4,6 +4,7 @@ import 'package:mood_track/src/core/constants/assets.dart';
 import 'package:mood_track/src/core/constants/spacing.dart';
 import 'package:mood_track/src/core/theme/my_color.dart';
 import 'package:mood_track/src/core/theme/nunito.dart';
+import 'package:mood_track/src/core/widgets/custom_calendar.dart';
 import 'package:mood_track/src/core/widgets/custom_tabbar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mood_track/src/feature/mood_track/widgets/diary_box.dart';
@@ -15,7 +16,6 @@ class MoodScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final nunito = Theme.of(context).extension<Nunito>()!;
-    final color = Theme.of(context).extension<MyColor>()!;
     final l = AppLocalizations.of(context);
 
 
@@ -32,14 +32,23 @@ class MoodScreen extends StatelessWidget {
       ),
     ];
 
+    void goPageCalendar(context) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return CustomCalendar();
+      }));
+    }
+
     return DefaultTabController(
       length: myTabs.length,
       child: Scaffold(
         appBar: AppBar(
           title: Text('1 января 09:00', style: nunito.s18W700),
           actions: [
-            SvgPicture.asset(
-              Assets.mySessions,
+            GestureDetector(
+              onTap: () => goPageCalendar(context),
+              child: SvgPicture.asset(
+                Assets.mySessions,
+              ),
             ),
             const SizedBox(width: 20),
           ],
@@ -49,25 +58,19 @@ class MoodScreen extends StatelessWidget {
           final TabController tabController = DefaultTabController.of(context);
           return Column(
             children: [
-              Container(
-                height: 30,
-                margin: Spacing.h44V24,
-                decoration: BoxDecoration(
-                  color: const Color(0xFFF1F1F1),
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: CustomTabBar(
-                  myTabs: myTabs,
-                  controller: tabController,
-                ),
+              CustomTabBar(
+                myTabs: myTabs,
+                controller: tabController,
               ),
               Expanded(
                 child: TabBarView(
                   controller: tabController,
                   children: [
-                    Padding(
-                      padding: Spacing.h20V30,
-                      child: DiaryBox(),
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: Spacing.h20V30,
+                        child: DiaryBox(),
+                      ),
                     ),
                     // Таб Статистика
                     Center(child: Text('Статистика content')),

@@ -14,7 +14,8 @@ final class Nunito extends ThemeExtension<Nunito> with _$NunitoTailorMixin{
     required this.s16W800,
     required this.s11W400,
     required this.s20W400,
-    required this.myColor
+    required this.s14W400,
+    required this.myColor,
   });
 
   @override
@@ -27,6 +28,8 @@ final class Nunito extends ThemeExtension<Nunito> with _$NunitoTailorMixin{
   final TextStyle s11W400;
   @override
   final TextStyle s20W400;
+  @override
+  final TextStyle s14W400;
   @override
   final MyColor myColor;
 
@@ -54,6 +57,11 @@ final class Nunito extends ThemeExtension<Nunito> with _$NunitoTailorMixin{
       ),
       s20W400: TextStyle(
         fontSize: 20,
+        fontWeight: FontWeight.w400,
+        color: myColor.grey2,
+      ),
+      s14W400: TextStyle(
+        fontSize: 14,
         fontWeight: FontWeight.w400,
         color: myColor.grey2,
       ),

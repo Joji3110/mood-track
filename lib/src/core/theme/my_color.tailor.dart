@@ -15,6 +15,7 @@ mixin _$MyColorTailorMixin on ThemeExtension<MyColor> {
   Color get grey2;
   Color get grey4;
   Color get grey5;
+  Color get milkyWhite;
 
   @override
   MyColor copyWith({
@@ -24,6 +25,7 @@ mixin _$MyColorTailorMixin on ThemeExtension<MyColor> {
     Color? grey2,
     Color? grey4,
     Color? grey5,
+    Color? milkyWhite,
   }) {
     return MyColor(
       orange: orange ?? this.orange,
@@ -32,6 +34,7 @@ mixin _$MyColorTailorMixin on ThemeExtension<MyColor> {
       grey2: grey2 ?? this.grey2,
       grey4: grey4 ?? this.grey4,
       grey5: grey5 ?? this.grey5,
+      milkyWhite: milkyWhite ?? this.milkyWhite,
     );
   }
 
@@ -45,6 +48,7 @@ mixin _$MyColorTailorMixin on ThemeExtension<MyColor> {
       grey2: Color.lerp(grey2, other.grey2, t)!,
       grey4: Color.lerp(grey4, other.grey4, t)!,
       grey5: Color.lerp(grey5, other.grey5, t)!,
+      milkyWhite: Color.lerp(milkyWhite, other.milkyWhite, t)!,
     );
   }
 
@@ -58,7 +62,9 @@ mixin _$MyColorTailorMixin on ThemeExtension<MyColor> {
             const DeepCollectionEquality().equals(white, other.white) &&
             const DeepCollectionEquality().equals(grey2, other.grey2) &&
             const DeepCollectionEquality().equals(grey4, other.grey4) &&
-            const DeepCollectionEquality().equals(grey5, other.grey5));
+            const DeepCollectionEquality().equals(grey5, other.grey5) &&
+            const DeepCollectionEquality()
+                .equals(milkyWhite, other.milkyWhite));
   }
 
   @override
@@ -71,6 +77,7 @@ mixin _$MyColorTailorMixin on ThemeExtension<MyColor> {
       const DeepCollectionEquality().hash(grey2),
       const DeepCollectionEquality().hash(grey4),
       const DeepCollectionEquality().hash(grey5),
+      const DeepCollectionEquality().hash(milkyWhite),
     );
   }
 }
@@ -93,4 +100,7 @@ extension MyColorBuildContextProps on BuildContext {
 
   /// HEX #E1DDD8
   Color get grey5 => myColor.grey5;
+
+  /// HEX #fffdfc
+  Color get milkyWhite => myColor.milkyWhite;
 }
