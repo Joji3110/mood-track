@@ -5,13 +5,14 @@ part 'my_color.tailor.dart';
 
 @TailorMixin()
 final class MyColor extends ThemeExtension<MyColor> with _$MyColorTailorMixin {
-  const MyColor({
+  const MyColor( {
     required this.orange,
     required this.black,
     required this.white,
     required this.grey2,
     required this.grey4,
     required this.grey5,
+    required this.milkyWhite
   });
 
   /// HEX: #FF8702
@@ -37,6 +38,10 @@ final class MyColor extends ThemeExtension<MyColor> with _$MyColorTailorMixin {
   @override
   final Color grey5;
 
+  /// HEX #fffdfc
+  @override
+  final Color milkyWhite;
+
   factory MyColor.light() {
     return MyColor(
       orange: Color(0xFFFF8702),
@@ -45,6 +50,7 @@ final class MyColor extends ThemeExtension<MyColor> with _$MyColorTailorMixin {
       grey2: Color(0xFFBCBCBF),
       grey4: Color(0xFFF2F2F2),
       grey5: Color(0xFFE1DDD8),
+      milkyWhite: Color(0xFFfffdfc),
     );
   }
 }

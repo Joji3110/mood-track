@@ -14,6 +14,7 @@ mixin _$NunitoTailorMixin on ThemeExtension<Nunito> {
   TextStyle get s16W800;
   TextStyle get s11W400;
   TextStyle get s20W400;
+  TextStyle get s14W400;
   MyColor get myColor;
 
   @override
@@ -23,6 +24,7 @@ mixin _$NunitoTailorMixin on ThemeExtension<Nunito> {
     TextStyle? s16W800,
     TextStyle? s11W400,
     TextStyle? s20W400,
+    TextStyle? s14W400,
     MyColor? myColor,
   }) {
     return Nunito(
@@ -31,6 +33,7 @@ mixin _$NunitoTailorMixin on ThemeExtension<Nunito> {
       s16W800: s16W800 ?? this.s16W800,
       s11W400: s11W400 ?? this.s11W400,
       s20W400: s20W400 ?? this.s20W400,
+      s14W400: s14W400 ?? this.s14W400,
       myColor: myColor ?? this.myColor,
     );
   }
@@ -44,6 +47,7 @@ mixin _$NunitoTailorMixin on ThemeExtension<Nunito> {
       s16W800: TextStyle.lerp(s16W800, other.s16W800, t)!,
       s11W400: TextStyle.lerp(s11W400, other.s11W400, t)!,
       s20W400: TextStyle.lerp(s20W400, other.s20W400, t)!,
+      s14W400: TextStyle.lerp(s14W400, other.s14W400, t)!,
       myColor: myColor.lerp(other.myColor, t) as MyColor,
     );
   }
@@ -58,6 +62,7 @@ mixin _$NunitoTailorMixin on ThemeExtension<Nunito> {
             const DeepCollectionEquality().equals(s16W800, other.s16W800) &&
             const DeepCollectionEquality().equals(s11W400, other.s11W400) &&
             const DeepCollectionEquality().equals(s20W400, other.s20W400) &&
+            const DeepCollectionEquality().equals(s14W400, other.s14W400) &&
             const DeepCollectionEquality().equals(myColor, other.myColor));
   }
 
@@ -70,6 +75,7 @@ mixin _$NunitoTailorMixin on ThemeExtension<Nunito> {
       const DeepCollectionEquality().hash(s16W800),
       const DeepCollectionEquality().hash(s11W400),
       const DeepCollectionEquality().hash(s20W400),
+      const DeepCollectionEquality().hash(s14W400),
       const DeepCollectionEquality().hash(myColor),
     );
   }
@@ -82,5 +88,6 @@ extension NunitoBuildContextProps on BuildContext {
   TextStyle get s16W800 => nunito.s16W800;
   TextStyle get s11W400 => nunito.s11W400;
   TextStyle get s20W400 => nunito.s20W400;
+  TextStyle get s14W400 => nunito.s14W400;
   MyColor get myColor => nunito.myColor;
 }
