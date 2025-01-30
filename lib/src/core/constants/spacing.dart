@@ -9,4 +9,6 @@ abstract final class Spacing {
   static const all20 = EdgeInsets.all(20);
   static const all16 = EdgeInsets.all(16);
   static const h16 = EdgeInsets.symmetric(horizontal: 16);
+  static const h25 = EdgeInsets.symmetric(horizontal: 25);
+  static const h8V3 = EdgeInsets.symmetric(horizontal: 8, vertical: 3);
 }

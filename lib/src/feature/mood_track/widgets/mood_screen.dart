@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
 import 'package:mood_track/src/core/constants/assets.dart';
 import 'package:mood_track/src/core/constants/spacing.dart';
 import 'package:mood_track/src/core/theme/my_color.dart';
@@ -17,6 +18,8 @@ class MoodScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final nunito = Theme.of(context).extension<Nunito>()!;
     final l = AppLocalizations.of(context);
+    final date = DateTime.now();
+    final formatedDate = DateFormat('d MMMM HH:mm', 'ru').format(date);
 
 
     final myTabs = [
@@ -42,7 +45,7 @@ class MoodScreen extends StatelessWidget {
       length: myTabs.length,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('1 января 09:00', style: nunito.s18W700),
+          title: Text(formatedDate, style: nunito.s18W700),
           actions: [
             GestureDetector(
               onTap: () => goPageCalendar(context),

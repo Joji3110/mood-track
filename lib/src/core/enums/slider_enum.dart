@@ -1,0 +1,1 @@
+enum SliderEnum {selfEsteem, stressLevel}

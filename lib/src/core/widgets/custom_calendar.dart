@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mood_track/src/core/constants/assets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:mood_track/src/core/constants/border_radius.dart';
 import 'package:mood_track/src/core/constants/spacing.dart';
 import 'package:mood_track/src/core/theme/my_color.dart';
 import 'package:mood_track/src/core/theme/nunito.dart';
@@ -54,7 +55,7 @@ class CustomCalendarState extends State<CustomCalendar> {
     return Scaffold(
       body: SafeArea(
         child: GestureDetector(
-          onScaleUpdate: (details) => _onScaleUpdate(details),
+          onDoubleTap: () => _onScaleUpdate(),
           child: Padding(
             padding: Spacing.all20,
             child: Column(
@@ -97,10 +98,10 @@ class CustomCalendarState extends State<CustomCalendar> {
     setState(() => _viewMode = viewMode);
   }
 
-  void _onScaleUpdate(ScaleUpdateDetails details) {
-    if (details.scale > 1.5 && _viewMode == CalendarViewMode.expanded) {
+  void _onScaleUpdate() {
+    if ( _viewMode == CalendarViewMode.expanded) {
       _onChangeViewMode(CalendarViewMode.compact);
-    } else if (details.scale < 0.7 && _viewMode == CalendarViewMode.compact) {
+    } else if (_viewMode == CalendarViewMode.compact) {
       _onChangeViewMode(CalendarViewMode.expanded);
     }
   }
@@ -234,7 +235,7 @@ class _CompactMonthCalendarState extends State<_CompactMonthCalendar> {
           child: Container(
             decoration: BoxDecoration(
               color: isSelected ? color.orange.withOpacity(0.25)  : Colors.transparent,
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: AppBorderRadius.all30,
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -248,7 +249,7 @@ class _CompactMonthCalendarState extends State<_CompactMonthCalendar> {
                   height: 5.26,
                   decoration: BoxDecoration(
                     color: color.orange,
-                    borderRadius: BorderRadius.circular(30)
+                    borderRadius: AppBorderRadius.all30,
                   ),
                 ) : SizedBox.shrink()
               ],
@@ -334,7 +335,7 @@ class _ExpandedMonthCalendar extends StatelessWidget {
                         ? nunito.myColor.orange.withOpacity(0.25)
                         : null,
                     borderRadius:
-                        isSelected ? BorderRadius.circular(30) : null),
+                        isSelected ? AppBorderRadius.all30 : null),
                 child: Text(dayNumber.toString(),
                     style: nunito.s12W500
                         .copyWith(fontSize: 10, color: nunito.myColor.black)),
