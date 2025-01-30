@@ -18,5 +18,18 @@
   "calmness": "Спокойствие",
   "force": "Сила",
   "save": "Сохранить",
-  "toDay": "Сегодня"
+  "toDay": "Сегодня",
+  "monthJanuary": "Январь",
+  "monthFebruary": "Февраль",
+  "monthMarch": "Март",
+  "monthApril": "Апрель",
+  "monthMay": "Май",
+  "monthJune": "Июнь",
+  "monthJuly": "Июль",
+  "monthAugust": "Август",
+  "monthSeptember": "Сентябрь",
+  "monthOctober": "Октябрь",
+  "monthNovember": "Ноябрь",
+  "monthDecember": "Декабрь",
+  "dataSaved": "Ваши данные успешно сохранены"
 }

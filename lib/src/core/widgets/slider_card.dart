@@ -1,26 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mood_track/src/core/constants/app_shadows.dart';
+import 'package:mood_track/src/core/constants/spacing.dart';
 import 'package:mood_track/src/core/theme/my_color.dart';
 import 'package:mood_track/src/core/theme/nunito.dart';
+import 'package:mood_track/src/feature/mood_track/bloc/mood_track_bloc_cubit.dart';
 
 class SliderCard extends StatefulWidget {
-  const SliderCard(
-      {required this.leftLabel, required this.rightLabel, super.key});
+  const SliderCard({
+    required this.leftLabel,
+    required this.rightLabel,
+    required this.sliderValue,
+    required this.onChangedSlider,
+    super.key,
+  });
 
   final String leftLabel;
   final String rightLabel;
+  final double sliderValue;
+  final Function(double) onChangedSlider;
 
   @override
   State<SliderCard> createState() => _SliderCardState();
 }
 
 class _SliderCardState extends State<SliderCard> {
-  double _currentValue = 3.0;
 
   @override
   Widget build(BuildContext context) {
     final color = Theme.of(context).extension<MyColor>()!;
     final nunito = Theme.of(context).extension<Nunito>()!;
+    final state = context.watch<MoodTrackCubit>().state;
+    final isEnabled = state.emotion != null;
 
     final int divisions = 6;
 
@@ -53,17 +64,16 @@ class _SliderCardState extends State<SliderCard> {
               Slider(
                 min: 0,
                 max: 6,
-                // divisions: 6,
-                value: _currentValue,
+                value: widget.sliderValue,
+                activeColor: isEnabled ? color.orange : null,
                 onChanged: (value) {
-                  setState(() {
-                    _currentValue = value;
-                  });
+                  isEnabled
+                      ? widget.onChangedSlider.call(value)
+                      : null;
                 },
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25)
-                    .copyWith(top: 35),
+                padding: Spacing.h25.copyWith(top: 35),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

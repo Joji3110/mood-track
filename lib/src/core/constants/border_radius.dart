@@ -7,4 +7,5 @@ abstract final class AppBorderRadius {
   static const all76 = BorderRadius.all(Radius.circular(76));
   static const all30 = BorderRadius.all(Radius.circular(30));
   static const all47 = BorderRadius.all(Radius.circular(47));
+  static const all3 = BorderRadius.all(Radius.circular(3));
 }

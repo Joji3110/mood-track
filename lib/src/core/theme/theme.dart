@@ -31,12 +31,12 @@ final lightTheme = ThemeData(
     sliderTheme: SliderThemeData(
       // thumbShape: RoundSliderThumbShape(enabledThumbRadius: 12.0),
       // overlayShape: RoundSliderOverlayShape(overlayRadius: 20.0),
-      thumbColor: _lightColor.orange, // Внешний круг (белый)
-      activeTrackColor: _lightColor.orange, // Цвет активной дорожки
-      inactiveTrackColor: _lightColor.grey5, // Цвет неактивной дорожки
-      overlayColor: _lightColor.orange.withOpacity(0.2), // Цвет наложения при удерживании
-      // valueIndicatorColor: _lightColor.orange, // Цвет всплывающей подсказки
+      thumbColor: _lightColor.white,
+      activeTrackColor: _lightColor.grey5,
+      inactiveTrackColor: _lightColor.grey5,
+      overlayColor: _lightColor.orange.withOpacity(0.2),
       trackHeight: 6.0,
+      disabledInactiveTrackColor: _lightColor.grey5
     ),
     extensions: [
       //  -- Light Color -- //

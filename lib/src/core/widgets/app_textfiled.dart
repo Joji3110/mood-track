@@ -19,7 +19,6 @@ class AppTextFiled extends StatelessWidget {
   Widget build(BuildContext context) {
     final color = Theme.of(context).extension<MyColor>()!;
 
-
     return Container(
       decoration: BoxDecoration(
         color: color.white,

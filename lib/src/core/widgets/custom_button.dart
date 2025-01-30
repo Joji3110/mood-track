@@ -4,7 +4,10 @@ import 'package:mood_track/src/core/theme/my_color.dart';
 import 'package:mood_track/src/core/theme/nunito.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key});
+  const CustomButton({required this.isEnabled, required this.onTap, super.key});
+
+  final bool isEnabled;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +18,12 @@ class CustomButton extends StatelessWidget {
     final nunito = Theme.of(context).extension<Nunito>()!;
 
     return FilledButton(
-      onPressed: () {},
+      onPressed: isEnabled ? onTap : null,
       style: Theme.of(context).filledButtonTheme.style!.copyWith(
             minimumSize: WidgetStatePropertyAll(
               Size(width, height * 0.05),
             ),
-        backgroundColor: WidgetStatePropertyAll(color.orange),
+        backgroundColor: WidgetStatePropertyAll(!isEnabled ? color.grey5 : null),
           ),
       child: Text(l.save, style: nunito.s20W400.copyWith(color: color.white)),
     );
